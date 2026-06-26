@@ -8,7 +8,7 @@ const presentationConfig = {
   logoUrl: "./presentation/images/hulianpai-logo.jpg",
   demoUrl: "http://localhost:5173/",
   screenshotUrl: "./presentation/screenshots/system-overview.png",
-  videoUrl: "./presentation/videos/demo.mp4",
+  videoUrl: "./presentation/videos/demo-recording.mov",
   preferVideo: false,
   showDemoButton: true,
   dataScale: "70万+",
@@ -592,6 +592,7 @@ function renderDemo(slide) {
         <p>${escapeHtml(slide.conclusion)}</p>
         ${config.showDemoButton ? `<a class="primary" href="${escapeHtml(config.demoUrl)}" target="_blank" rel="noreferrer">进入系统演示</a>` : ""}
         <button class="secondary" data-action="video">观看演示录屏</button>
+        <a class="secondary" href="${escapeHtml(config.videoUrl)}" target="_blank" rel="noreferrer">打开录屏文件</a>
         <small>Demo 地址与录屏路径均来自 presentationConfig.js</small>
       </aside>
     </div>
@@ -699,7 +700,7 @@ function renderVideoModal() {
       <div class="video-box">
         <button class="close" data-action="video">×</button>
         <video src="${escapeHtml(config.videoUrl)}" controls></video>
-        <div class="video-fallback">如视频无法播放，请替换 public/presentation/videos/demo.mp4</div>
+        <div class="video-fallback">如视频无法播放，请使用“打开录屏文件”跳转查看。</div>
         <div class="chapter-buttons">
           ${config.videoChapters.map((chapter) => `<button data-video-time="${chapter.time}">${escapeHtml(chapter.label)}</button>`).join("")}
         </div>

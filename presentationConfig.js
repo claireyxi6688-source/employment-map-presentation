@@ -8,7 +8,7 @@ export const presentationConfig = {
   logoUrl: "./presentation/images/hulianpai-logo.jpg",
   demoUrl: "http://localhost:5173/",
   screenshotUrl: "./presentation/screenshots/system-overview.png",
-  videoUrl: "./presentation/videos/demo.mp4",
+  videoUrl: "./presentation/videos/demo-recording.mov",
   preferVideo: false,
   showDemoButton: true,
   dataScale: "70万+",
