@@ -4,7 +4,13 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const root = fs.existsSync(path.join(here, "index.html")) ? here : path.resolve(here, "..", "src", "presentation");
+const builtRoot = path.resolve(here, "..", "..", "outputs", "web-presentation");
+const sourceRoot = path.resolve(here, "..", "src", "presentation");
+const root = fs.existsSync(path.join(here, "index.html"))
+  ? here
+  : fs.existsSync(path.join(builtRoot, "index.html"))
+    ? builtRoot
+    : sourceRoot;
 const port = Number(process.env.PORT || 4173);
 const host = process.env.HOST || "127.0.0.1";
 const types = {
@@ -14,7 +20,8 @@ const types = {
   ".png": "image/png",
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",
-  ".mp4": "video/mp4"
+  ".mp4": "video/mp4",
+  ".mov": "video/quicktime"
 };
 
 const server = http.createServer((request, response) => {
